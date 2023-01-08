@@ -1,5 +1,3 @@
-let s:Exists = function('glob')
-
 function! s:TryGlobs(...)
 	let n = a:0
 
@@ -8,7 +6,7 @@ function! s:TryGlobs(...)
 
 		let target = expand("%:r") . "." . ext
 
-		if s:Exists(target) != "" || i is n - 1
+		if glob(target) != "" || i is n - 1
 			return target
 		endif
 	endfor

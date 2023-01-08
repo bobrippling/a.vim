@@ -1,0 +1,142 @@
+Given javascript:
+  yo
+Execute:
+  let sav = &ft | silent f yo.spec.js | let &ft = sav
+  A
+Then:
+  Assert expand("%:t") ==# "yo.js"
+
+Given javascript:
+  yo
+Execute:
+  let sav = &ft | silent f yo.js | let &ft = sav
+  A
+Then:
+  Assert expand("%:t") ==# "yo.spec.js"
+
+Given javascript:
+  yo
+Execute:
+  let sav = &ft | silent f lots.of.dots.js | let &ft = sav
+  A
+Then:
+  Assert expand("%:t") ==# "lots.of.dots.spec.js"
+
+Given javascript:
+  yo
+Execute:
+  let sav = &ft | silent f lots.of.dots.spec.js | let &ft = sav
+  A
+Then:
+  Assert expand("%:t") ==# "lots.of.dots.js"
+
+" -----------
+
+Given objcpp:
+  yo
+Execute:
+  let sav = &ft | silent f hi.mm | let &ft = sav
+  A
+Then:
+  Assert expand("%:t") ==# "hi.h"
+
+Given objc:
+  yo
+Execute:
+  let sav = &ft | silent f hi.m | let &ft = sav
+  A
+Then:
+  Assert expand("%:t") ==# "hi.h"
+
+Given c:
+  yo
+Execute:
+  let sav = &ft | silent f hi.c | let &ft = sav
+  A
+Then:
+  Assert expand("%:t") ==# "hi.h"
+
+Given cpp:
+  yo
+Execute:
+  let sav = &ft | silent f hi.cpp | let &ft = sav
+  A
+Then:
+  Assert expand("%:t") ==# "hi.h"
+
+Given cpp:
+  yo
+Execute:
+  let sav = &ft | silent f hi.cxx | let &ft = sav
+  A
+Then:
+  Assert expand("%:t") ==# "hi.h"
+
+Given cpp:
+  yo
+Execute:
+  let sav = &ft | silent f hi.cc | let &ft = sav
+  A
+Then:
+  Assert expand("%:t") ==# "hi.h"
+
+" -----------
+
+Given c:
+  yo
+Execute:
+  !touch "hi.mm"
+  let sav = &ft | silent f hi.h | let &ft = sav
+  A
+Then:
+  Assert expand("%:t") ==# "hi.mm"
+  call delete("hi.mm")
+
+Given c:
+  yo
+Execute:
+  !touch "hi.m"
+  let sav = &ft | silent f hi.h | let &ft = sav
+  A
+Then:
+  Assert expand("%:t") ==# "hi.m"
+  call delete("hi.m")
+
+Given c:
+  yo
+Execute:
+  !touch "hi.c"
+  let sav = &ft | silent f hi.h | let &ft = sav
+  A
+Then:
+  Assert expand("%:t") ==# "hi.c"
+  call delete("hi.c")
+
+Given c:
+  yo
+Execute:
+  !touch "hi.cpp"
+  let sav = &ft | silent f hi.h | let &ft = sav
+  A
+Then:
+  Assert expand("%:t") ==# "hi.cpp"
+  call delete("hi.cpp")
+
+Given c:
+  yo
+Execute:
+  !touch "hi.cxx"
+  let sav = &ft | silent f hi.h | let &ft = sav
+  A
+Then:
+  Assert expand("%:t") ==# "hi.cxx"
+  call delete("hi.cxx")
+
+Given c:
+  yo
+Execute:
+  " nothing exists
+  let sav = &ft | silent f hi.h | let &ft = sav
+  A
+Then:
+  Assert expand("%:t") ==# "hi.c"
