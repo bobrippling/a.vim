@@ -16,7 +16,6 @@ endfunction
 
 function! s:CAltFile()
 	let ext = expand("%:e")
-	echom "ext" ext
 
 	if ext ==? "c" || ext ==? "cpp" || ext ==? "cc" || ext ==? "cxx" || ext ==? "m" || ext ==? "mm"
 		return s:TryGlobs("hxx", "h")
